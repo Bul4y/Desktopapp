@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:CapProject.Viewmodels"
+             xmlns:model="clr-namespace:ModelsAndDTOs.DTO;assembly=ModelsAndDTOs"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:FacultypageViewmodel"
+             x:Class="CapProject.Pages.Facultyuserpage"
+             Title="User List">
+    
+        <Grid ColumnDefinitions=".7*,.2*">
+            <Grid RowDefinitions="auto,*">
+                <Grid ColumnDefinitions=".3*,*,*,*,*,*"
+                      Padding="0,10">
+                    <Label Text="ID"
+                           HorizontalOptions="Center"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                    <Label Text="Name"
+                           Grid.Column="1"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                    <Label Text="User Name"
+                           Grid.Column="2"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                    <Label Text="Role"
+                           Grid.Column="3"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                    <Label Text="Date Created"
+                           Grid.Column="4"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                    <Label Text="Action"
+                           HorizontalOptions="Center"
+                           Grid.Column="5"
+                           FontSize="14"
+                           FontAttributes="Bold"/>
+                </Grid>
+                <CollectionView ItemsSource="{Binding Users}"
+                                x:Name="ListViewName"
+                                SelectionMode="Single"
+                                Grid.Row="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ViewUserListDTO">
+                            <Grid ColumnDefinitions=".3*,*,*,*,*,*">
+                                    <Label Text="{Binding Id}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Name}"
+                                           VerticalOptions="Center"
+                                           Grid.Column="1"/>
+                                    <ScrollView Orientation="Horizontal"
+                                                VerticalOptions="Center"
+                                                Grid.Column="2">
+                                        <Label Text="{Binding Username}"/>
+                                    </ScrollView>
+                                    <Label Text="{Binding Role}"
+                                           VerticalOptions="Center"
+                                           Grid.Column="3"/>
+                                    <Label Text="{Binding DateCreated}"
+                                           VerticalOptions="Center"
+                                           Grid.Column="4"/>
+                                    <Button Text="Delete"
+                                            Margin="10"
+                                            Padding="2"
+                                            WidthRequest="130"
+                                            Grid.Column="5"
+                                            Command="{Binding Source={x:Reference ListViewName}, Path=BindingContext.DeleteUserCommand}"
+                                            CommandParameter="{Binding Id}" />
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+            <Grid Grid.Column="1"
+                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                  Padding="15"
+                  RowSpacing="20"
+                  BackgroundColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource SurfaceDark}}">
+
+                <Label Text="Account Options"
+                       FontSize="Medium"
+                       HorizontalOptions="Center"/>
+                <StackLayout Grid.Row="1">
+                    <HorizontalStackLayout>
+                        <Label Text="Name"
+                               FontSize="14"
+                               VerticalOptions="Center"/>
+                        <Label Text="Field Is Required*"
+                               TextColor="Red"
+                               FontSize="10"
+                               VerticalOptions="Center"
+                               Padding="10,0"
+                               IsVisible="{Binding Isname}"/>
+                    </HorizontalStackLayout>
+                    <Entry Placeholder="Name"
+                           Text="{Binding Name}"
+                           x:Name="NameEntry"/>
+                    
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <HorizontalStackLayout>
+                        <Label Text="Username"
+                               FontSize="14"
+                               VerticalOptions="Center"/>
+                        <Label Text="Field Is Required*"
+                               TextColor="Red"
+                               FontSize="10"
+                               VerticalOptions="Center"
+                               Padding="10,0"
+                               IsVisible="{Binding Isusername}"/>
+                    </HorizontalStackLayout>
+                    <Entry Placeholder="Name"
+                           Text="{Binding Username}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="Password"
+                               FontSize="14"
+                               VerticalOptions="Center"/>
+                        <Label Text="Field Is Required*"
+                               TextColor="Red"
+                               FontSize="10"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               Padding="10,0"
+                               IsVisible="{Binding Ispassword}"/>
+                        <Label Text="Entry Doesnt Match*"
+                               Grid.Column="1"
+                               TextColor="Red"
+                               FontSize="10"
+                               VerticalOptions="Center"
+                               Padding="10,0"
+                               IsVisible="{Binding Passwordmismatch}"/>
+                    </Grid>
+                    <Entry Placeholder="Name"
+                           Text="{Binding Password}"
+                           IsPassword="True"/>
+                </StackLayout>
+                <StackLayout Grid.Row="4">
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="Confirm Password"
+                               FontSize="14"
+                               VerticalOptions="Center"/>
+                        <Label Text="Field Is Required*"
+                               TextColor="Red"
+                               FontSize="10"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               Padding="10,0"
+                               IsVisible="{Binding Ispassword}"/>
+                        <Label Text="Entry Doesnt Match*"
+                               Grid.Column="1"
+                                TextColor="Red"
+                                FontSize="10"
+                                VerticalOptions="Center"
+                                Padding="10,0"
+                                IsVisible="{Binding Passwordmismatch}"/>
+                    </Grid>
+                    <Entry Placeholder="Name"
+                           IsPassword="True"
+                           Text="{Binding Conpassword}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="5">
+                    <HorizontalStackLayout>
+                        <Label Text="Role"
+                               FontSize="14"
+                               VerticalOptions="Center"/>
+                        <Label Text="Field Is Required*"
+                               TextColor="Red"
+                               IsVisible="{Binding Isrole}"
+                               FontSize="10"
+                               Margin="19,0"/>
+                    </HorizontalStackLayout>
+                    <Picker ItemsSource="{Binding Options}"
+                            SelectedItem="{Binding Role}"
+                            FontSize="14"/>
+                </StackLayout>
+                <StackLayout  Grid.Row="6"
+                              Spacing="5"
+                              Padding="20,0">
+                    <Button Text="Create"
+                            Command="{Binding AddAccountCommand}"
+                            ToolTipProperties.Text="Add New Account"/>
+                    <Button Text="Update"
+                            IsEnabled="False"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    
+</ContentPage>

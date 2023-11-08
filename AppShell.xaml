@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Desktopapp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Desktopapp"
+    xmlns:page="clr-namespace:CapProject.Pages"
+    xmlns:icons="clr-namespace:CapProject.Model"
+    FlyoutBehavior="Locked"
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource SurfaceDark}}">
+
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="15">
+            <Image Source="equipcheck.png"
+               WidthRequest="120"/>
+            <Label Text="EquipCheck"
+               HorizontalOptions="Center"
+               FontSize="35"/>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate page:LoginPage}"
+        Route="LoginPage"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False"
+        Shell.FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        Title="Loading"
+        ContentTemplate="{DataTemplate page:LoadingPage}"
+        Route="LoadingPage"
+        Shell.NavBarIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.FlyoutItemIsVisible="False"/>
+
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate page:Homepage}"
+        Route="Homepage"/>
+
+    <ShellContent
+        Title="Inventory"
+        ContentTemplate="{DataTemplate page:Inventorypage}"
+        Route="Inventorypage"/>
+
+    <ShellContent
+        Title="User Control Panel"
+        ContentTemplate="{DataTemplate page:Facultyuserpage}"
+        Route="Facultyuserpage"/>
+
+    <ShellContent
+        Title="Reports"
+        ContentTemplate="{DataTemplate page:ReportPage}"
+        Route="ReportPage"/>
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="10">
+            <Button Text="Logout"
+                    Clicked="Button_Clicked"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+</Shell>

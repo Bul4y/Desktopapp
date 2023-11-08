@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dto="clr-namespace:ModelsAndDTOs.DTO;assembly=ModelsAndDTOs"
+             xmlns:models="clr-namespace:ModelsAndDTOs.Models;assembly=ModelsAndDTOs"
+             xmlns:viewmodel="clr-namespace:CapProject.Viewmodels"
+             x:DataType="viewmodel:InvenotorypageViewmodel"
+             x:Class="CapProject.Pages.Inventorypage"
+             Title="Equipment Inventory">
+    <Grid ColumnDefinitions=".8*,.3*"
+          Margin="15"
+          ColumnSpacing="5">
+        <Frame>
+            <Grid RowDefinitions="auto,*">
+                <Grid ColumnDefinitions="auto,*"
+                      ColumnSpacing="15"
+                      Margin="0,0,0,20">
+                    <Grid ColumnDefinitions="auto,auto"
+                          ColumnSpacing="5">
+                        <Button Text="Equipments"
+                                IsEnabled="{Binding ComponentSelected}"
+                                Command="{Binding DisplayEquipmentCommand}"/>
+                        
+                        <Button Text="Components"
+                                IsEnabled="{Binding EquipmentSelected}"
+                                Command="{Binding DisplayComponentsCommand}"
+                                Grid.Column="1"/>
+                    </Grid>
+                    <SearchBar HorizontalOptions="End"
+                               Grid.Column="1"
+                               WidthRequest="250"
+                               IsVisible="{Binding EquipmentSelected}"
+                               Placeholder="Search..."
+                               Text="{Binding SearchText}"
+                               SearchCommand="{Binding FilterDataCommand}"/>
+                </Grid>
+                <Grid RowDefinitions="auto,*"
+                      Grid.Row="1"
+                      IsVisible="{Binding EquipmentSelected}"
+                      BackgroundColor="{StaticResource BaseDark1}"
+                      Padding="10">
+                    <Grid ColumnDefinitions="*,*,*,*,*"
+                          Margin="5,0">
+                        <Label Text="Property Number"
+                               FontSize="14"/>
+                        <Label Text="Category"
+                               FontSize="14"
+                               Grid.Column="1"/>
+                        <Label Text="Status"
+                               FontSize="14"
+                               Grid.Column="2"/>
+                        <Label Text="Location"
+                               FontSize="14"
+                               Grid.Column="3"/>
+                        <Label Text="Date Added"
+                               FontSize="14"
+                               Grid.Column="4"/>
+                    </Grid>
+                    <ScrollView Grid.Row="1">
+                        <ListView ItemsSource="{Binding Dto}"
+                                  ItemTapped="ListView_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="dto:UniFiedList">
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="*,*,*,*,*"
+                                              Margin="5,10">
+                                            <Label Text="{Binding PropertyNumber}"/>
+                                            <Label Text="{Binding Category}"
+                                                   Grid.Column="1"/>
+                                            <Label Text="{Binding Status}"
+                                                   Grid.Column="2"/>
+                                            <Label Text="{Binding Location}"
+                                                   Grid.Column="3"/>
+                                            <Label Text="{Binding DateCreated}"
+                                                   Grid.Column="4"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollView>
+                </Grid>
+                <Grid RowDefinitions="auto,*"
+                      Grid.Row="1"
+                      BackgroundColor="{StaticResource BaseDark1}"
+                      IsVisible="{Binding ComponentSelected}"
+                      Padding="10">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                          Margin="5,0">
+                        <Label Text="Component ID"
+                               FontSize="14"/>
+                        <Label Text="Type"
+                               FontSize="14"
+                               Grid.Column="1"/>
+                        <Label Text="Specification"
+                               FontSize="14"
+                               Grid.Column="2"/>
+                        <Label Text="Issued By"
+                               FontSize="14"
+                               Grid.Column="3"/>
+                        <Label Text="Price"
+                               FontSize="14"
+                               Grid.Column="4"/>
+                        <Label Text="InUse"
+                               FontSize="14"
+                               Grid.Column="5"/>
+                        <Label Text="Date Added"
+                               FontSize="14"
+                               Grid.Column="6"/>
+                    </Grid>
+                    <ScrollView Grid.Row="1">
+                        <ListView ItemsSource="{Binding ComponentList}"
+                                  ItemTapped="ListView_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="dto:ViewComponentListDTO">
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                                              Margin="5,10">
+                                            <Label Text="{Binding ComponentUid}"/>
+                                            <Label Text="{Binding Type}"
+                                                   Grid.Column="1"/>
+                                            <Label Text="{Binding Specification}"
+                                                   Grid.Column="2"/>
+                                            <Label Text="{Binding IssuedBy}"
+                                                   Grid.Column="3"/>
+                                            <Label Text="{Binding Price}"
+                                                   Grid.Column="4"/>
+                                            <Label Text="{Binding InUse}"
+                                                   Grid.Column="5"/>
+                                            <Label Text="{Binding DateCreated}"
+                                                   Grid.Column="6"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </Frame>
+        <Frame Grid.Column="1">
+
+            <Grid RowDefinitions="auto,auto,auto,*"
+                  IsVisible="{Binding EquipmentSelected}">
+                <Label Text="Equipment Details"
+                       FontSize="19"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Margin="0,10"/>
+                <Label Text="1293128967312"
+                       x:Name="PropertyNumber"
+                       Grid.Row="1"
+                       HorizontalOptions="Center"
+                       FontSize="16"/>
+                <Label Text="Property Number"
+                       Grid.Row="2"
+                       HorizontalOptions="Center"/>
+                <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,*"
+                      ColumnDefinitions=".3*,*"
+                      RowSpacing="15"
+                      Grid.Row="3">
+                    
+                    <Label Text="Category:"
+                           VerticalOptions="End"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           FontSize="14"
+                           x:Name="Category"
+                           Grid.Column="1"/>
+
+                    <Label Text="Issued To:"
+                           VerticalOptions="End"
+                           Grid.Row="1"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           FontSize="14"
+                           x:Name="IssuedTo"
+                           Grid.Row="1"
+                           Grid.Column="1"/>
+
+                    <Label Text="Issued By:"
+                           VerticalOptions="End"
+                           Grid.Row="2"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="IssuedBy"
+                           FontSize="14"
+                           Grid.Row="2"
+                           Grid.Column="1"/>
+
+                    <Label Text="Status:"
+                           VerticalOptions="End"
+                           Grid.Row="3"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="Status"
+                           FontSize="14"
+                           Grid.Row="3"
+                           Grid.Column="1"/>
+
+                    <Label Text="Location:"
+                           VerticalOptions="End"
+                           Grid.Row="4"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="Location"
+                           FontSize="14"
+                           Grid.Row="4"
+                           Grid.Column="1"/>
+
+                    <Label Text="Unit Price:"
+                           VerticalOptions="End"
+                           Grid.Row="5"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="Unitprice"
+                           FontSize="14"
+                           Grid.Row="5"
+                           Grid.Column="1"/>
+
+                    <Label Text="Date Created:"
+                           VerticalOptions="End"
+                           Grid.Row="6"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="DateCreated"
+                           FontSize="14"
+                           Grid.Row="6"
+                           Grid.Column="1"/>
+
+                    <Label Text="Last Updated:"
+                           VerticalOptions="End"
+                           Grid.Row="7"/>
+                    <Label Text=""
+                           VerticalOptions="End"
+                           x:Name="DateUpdated"
+                           FontSize="14"
+                           Grid.Row="7"
+                           Grid.Column="1"/>
+
+                    <Label Text="Specifications"
+                           VerticalOptions="End"
+                           Grid.Row="8"
+                          x:Name="labelVisibility"/>
+
+                    <Grid Grid.Row="9"
+                          Grid.ColumnSpan="2"
+                          x:Name="visibility">
+                        <ListView x:Name="listview">
+                            <ListView.Header>
+                                <Grid ColumnDefinitions="*,.5*,*">
+                                    <Label Text="ID"/>
+                                    <Label Text="Type"
+                                           Grid.Column="1"/>
+                                    <Label Text="Specification"
+                                           Grid.Column="2"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="dto:ViewComponentDetailDTO">
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions=".6*,*,*">
+                                            <Label Text="{Binding ComponentUid}"
+                                                   FontSize="9"/>
+                                            <Label Text="{Binding Type}"
+                                                   Grid.Column="1"
+                                                   FontSize="9"/>
+                                            <Label Text="{Binding Specification}"
+                                                   FontSize="9"
+                                                   Grid.Column="2"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

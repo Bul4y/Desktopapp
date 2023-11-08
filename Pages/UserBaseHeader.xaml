@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapProject.Pages.UserBaseHeader"
+             Padding="0,15">
+    <Image Source="equipcheck.png"
+           WidthRequest="120"/>
+    <Label Text="Username" 
+           x:Name="UserName"
+           Padding="10"
+           HorizontalOptions="Center"
+           FontSize="20"/>
+</StackLayout>

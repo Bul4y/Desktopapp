@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CapProject.Pages.ComponentsPage"
+             Title="Components Inventory">
+    <Grid ColumnDefinitions=".6*,.5*"
+          ColumnSpacing="5"
+          Margin="15">
+        <Frame>
+            <Grid RowDefinitions="auto,*">
+                <Label Text="Components List"
+                       FontSize="24"
+                       Margin="20,0,0,15"/>
+                <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                            Grid.Row="1">
+                    
+                </ScrollView>
+            </Grid>
+        </Frame>
+        <Frame Grid.Column="1">
+        </Frame>
+    </Grid>
+</ContentPage>

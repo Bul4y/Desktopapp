@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:CapProject.Viewmodels"
+             xmlns:icons="clr-namespace:CapProject.Model"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:LoginpageViewmodel"
+             x:Class="CapProject.Pages.LoginPage"
+             Title="LoginPage">
+    
+    <Grid Margin="0, 100"
+          WidthRequest="1000"
+          ColumnDefinitions=".6*,.7*"
+          HorizontalOptions="Center">
+        <Frame CornerRadius="0">
+            <Grid RowDefinitions="auto,*,*,auto"
+                  Padding="0,30">
+                <Grid RowDefinitions="auto,*"
+                      ColumnSpacing="10"
+                      HorizontalOptions="Center">
+                    <Image Source="equipcheck.png"
+                           WidthRequest="110"
+                           x:Name="Image"/>
+                    <Label Text="EquipCheck"
+                           Grid.Row="1"
+                           FontSize="Header"
+                           Grid.Column="1"
+                           VerticalOptions="Center"/>
+                </Grid>
+                <Label Text="Equipment Status Management System"
+                       FontSize="25"
+                       Grid.Row="1"
+                       Margin="10,0"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="auto,auto"
+                      HorizontalOptions="Center">
+                    <Image Source="cictlogo.png"
+                           WidthRequest="140"/>
+                    <Image Source="catsulogo.png"
+                           Grid.Column="1"
+                           WidthRequest="100"/>
+                </Grid>
+                <Label Text="Copy Right 2023"
+                       Grid.Row="3"
+                       HorizontalOptions="Center"/>
+            </Grid>
+        </Frame>
+        <Frame Grid.Column="1"
+               BackgroundColor="White"
+               CornerRadius="0"
+               Padding="50,0">
+            <StackLayout VerticalOptions="Center">
+                <Grid RowDefinitions="auto,auto,auto,auto,auto,auto"
+                      RowSpacing="20">
+                    <Label Text="EQUIPCHECK"
+                           FontSize="Header"
+                           TextColor="{StaticResource AccentDarker}"
+                           HorizontalOptions="Center"/>
+                    <Label Text="User Login"
+                           FontSize="25"
+                           TextColor="{StaticResource AccentDarker}"
+                           HorizontalOptions="Center"
+                           Grid.Row="1"/>
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="auto,*">
+                        <Label Text="{x:Static icons:Icons.Person}" 
+                               Style="{x:StaticResource MaterialIcon}"
+                               TextColor="{StaticResource AccentDarker}"
+                               FontSize="30"
+                               VerticalOptions="Center"/>
+                        <Entry Placeholder="Email"
+                               Grid.Column="1"
+                               Text="{Binding Usernamecred}"
+                               PlaceholderColor="Black"
+                               TextColor="Black"
+                               BackgroundColor="AliceBlue"/>
+                    </Grid>
+                    <Grid Grid.Row="3"
+                          ColumnDefinitions="auto,*">
+                        <Label Text="{x:Static icons:Icons.Lock}" 
+                               Style="{x:StaticResource MaterialIcon}"
+                               TextColor="{StaticResource AccentDarker}"
+                               FontSize="30"
+                               VerticalOptions="Center"/>
+                        <Entry Placeholder="Email"
+                               Text="{Binding Passwordcred}"
+                               Grid.Column="1"
+                               PlaceholderColor="Black"
+                               TextColor="Black"
+                               IsPassword="True"
+                               BackgroundColor="AliceBlue"/>
+                    </Grid>
+                    <Grid Grid.Row="4"
+                          ColumnDefinitions="auto,*"
+                          Margin="25,0,0,0">
+                        <CheckBox Color="{StaticResource AccentDarker}"/>
+                        <Label Text="Remember me"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource AccentDarker}"/>
+                    </Grid>
+                    <Button Text="Login"
+                            Padding="10"
+                            Grid.Row="5"
+                            WidthRequest="100"
+                            HorizontalOptions="Center"
+                            Command="{Binding LoginCommand}"
+                            BackgroundColor="{StaticResource AccentDarker}"
+                            IsEnabled="{Binding }"
+                            x:Name="button"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+    
+</ContentPage>
