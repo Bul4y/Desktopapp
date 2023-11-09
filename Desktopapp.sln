@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktopapp", "Desktopapp.csproj", "{F93EF49B-4A3E-48A1-8DF1-1B1F2F6E57CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktopapp", "Desktopapp.csproj", "{F93EF49B-4A3E-48A1-8DF1-1B1F2F6E57CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsAndDTOs", "..\EquipCheckWebAPI\ModelsAndDTOs\ModelsAndDTOs.csproj", "{55A67F67-6EC2-499F-9BFC-0D626D033D81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{F93EF49B-4A3E-48A1-8DF1-1B1F2F6E57CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F93EF49B-4A3E-48A1-8DF1-1B1F2F6E57CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F93EF49B-4A3E-48A1-8DF1-1B1F2F6E57CA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{55A67F67-6EC2-499F-9BFC-0D626D033D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A67F67-6EC2-499F-9BFC-0D626D033D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A67F67-6EC2-499F-9BFC-0D626D033D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A67F67-6EC2-499F-9BFC-0D626D033D81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

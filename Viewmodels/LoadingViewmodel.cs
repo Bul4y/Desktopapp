@@ -1,4 +1,7 @@
 ﻿using CapProject.Pages;
+using Desktopapp.Pages;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace CapProject.Viewmodels
 {
@@ -12,15 +15,27 @@ namespace CapProject.Viewmodels
         private async Task getUserDets()
         {
             var token = await SecureStorage.GetAsync("Token");
-            if (!string.IsNullOrEmpty(token))
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var readtoken = tokenHandler.ReadJwtToken(token);
+
+            var claims = readtoken.Claims;
+
+            var userIdClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            if (userIdClaim == "Admin")
             {
                 Shell.Current.FlyoutHeader = new UserBaseHeader();
+                Shell.Current.FlyoutFooter = new FooterShell();
                 await Shell.Current.GoToAsync($"//{nameof(Homepage)}");
+                return;
             }
-            else
+            if (userIdClaim == "Property Custodian")
             {
-                await Shell.Current.GoToAsync(nameof(LoginPage));
+                Shell.Current.FlyoutHeader = new UserBaseHeader();
+                Shell.Current.FlyoutFooter = new custodianfooter();
+                await Shell.Current.GoToAsync($"//{nameof(Homepage)}");
+                return;
             }
+
         }
     }
 

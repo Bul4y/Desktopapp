@@ -5,8 +5,7 @@
              xmlns:model="clr-namespace:ModelsAndDTOs.DTO;assembly=ModelsAndDTOs"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:FacultypageViewmodel"
-             x:Class="CapProject.Pages.Facultyuserpage"
-             Title="User List">
+             x:Class="CapProject.Pages.Facultyuserpage">
     
         <Grid ColumnDefinitions=".7*,.2*">
             <Grid RowDefinitions="auto,*">

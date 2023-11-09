@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:icons="clr-namespace:CapProject.Model"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desktopapp.Pages.FooterShell"
+             Margin="10">
+    <Frame Padding="5"
+           Margin="10,0">
+        <HorizontalStackLayout Spacing="15">
+            <Label Text="{x:Static icons:Icons.Person_add_alt_1}" 
+                   Style="{x:StaticResource MaterialIcon}"
+                   FontSize="25"/>
+            <Label Text="User"
+                   VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+        </Frame.GestureRecognizers>
+    </Frame>
+    <Frame Padding="5"
+           Margin="10,0">
+    <HorizontalStackLayout Spacing="15">
+        <Label Text="{x:Static icons:Icons.Settings}" 
+                   Style="{x:StaticResource MaterialIcon}"
+                   FontSize="25"/>
+        <Label Text="System Setting"
+                   VerticalOptions="Center"/>
+    </HorizontalStackLayout>
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </Frame.GestureRecognizers>
+    </Frame>
+    <Button Text="Logout"
+            Clicked="Button_Clicked"/>
+</StackLayout>

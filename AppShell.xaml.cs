@@ -1,4 +1,5 @@
 ﻿using CapProject.Pages;
+using Desktopapp.Pages;
 
 namespace Desktopapp
 {
@@ -17,6 +18,7 @@ namespace Desktopapp
             Routing.RegisterRoute(nameof(Inventorypage), typeof(Inventorypage));
             Routing.RegisterRoute(nameof(ReportPage), typeof(ReportPage));
             Routing.RegisterRoute(nameof(ComponentsPage), typeof(ComponentsPage));
+            Routing.RegisterRoute(nameof(SystemsSettingsPage), typeof(SystemsSettingsPage));
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

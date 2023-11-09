@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:CapProject.Viewmodels"
              x:DataType="viewmodel:InvenotorypageViewmodel"
              x:Class="CapProject.Pages.Inventorypage"
-             Title="Equipment Inventory">
+             Title="Equipments and Componets">
     <Grid ColumnDefinitions=".8*,.3*"
           Margin="15"
           ColumnSpacing="5">
@@ -156,8 +156,9 @@
                        Grid.Row="2"
                        HorizontalOptions="Center"/>
                 <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,*"
-                      ColumnDefinitions=".3*,*"
-                      RowSpacing="15"
+                      ColumnDefinitions="auto,*"
+                      ColumnSpacing="10"
+                      RowSpacing="10"
                       Grid.Row="3">
                     
                     <Label Text="Category:"
@@ -259,7 +260,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="dto:ViewComponentDetailDTO">
                                     <ViewCell>
-                                        <Grid ColumnDefinitions=".6*,*,*">
+                                        <Grid ColumnDefinitions="*,.5*,*">
                                             <Label Text="{Binding ComponentUid}"
                                                    FontSize="9"/>
                                             <Label Text="{Binding Type}"

@@ -141,16 +141,13 @@
                            Margin="20,0"/>
                     <Grid Grid.Row="1"
                           RowDefinitions="auto,*">
-                    <Grid ColumnDefinitions=".1*,*,.4*">
-                        <Label Text="ID"
-                               FontSize="14"/>
+                    <Grid ColumnDefinitions="*,.5*">
                         <Label Text="Description"
                                HorizontalOptions="Center"
-                               Grid.Column="1"
                                FontSize="14"/>
                         <Label Text="Date and Time"
                                HorizontalOptions="Start"
-                               Grid.Column="2"
+                               Grid.Column="1"
                                FontSize="14"/>
                     </Grid>
                         <ScrollView Grid.Row="1"
@@ -159,13 +156,11 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="model:HistoryModel">
                                         <ViewCell>
-                                            <Grid ColumnDefinitions=".1*,*,.4*"
+                                            <Grid ColumnDefinitions="*,.5*"
                                                   Padding="0,10">
-                                                <Label Text="{Binding Id}"/>
-                                                <Label Text="{Binding Description}"
-                                                       Grid.Column="1"/>
+                                                <Label Text="{Binding Description}"/>
                                                 <Label Text="{Binding AtTime}"
-                                                       Grid.Column="2"/>
+                                                       Grid.Column="1"/>
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>

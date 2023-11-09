@@ -18,5 +18,9 @@ namespace CapProject.Services.DataService
         public Task<List<ViewUserListDTO>> GetUserList();
         public Task<List<ViewComponentListDTO>> GetComponentList();
         public Task<GetEquipmentListDTO> GetEquipmentByPN(string PN);
+        public Task<List<string>> GetstatusList();
+        public Task<List<string>> GetCategoryList();
+        public Task<List<string>> GetIssuersNameList();
+        public Task<List<string>> GetLocationList();
     }
 }

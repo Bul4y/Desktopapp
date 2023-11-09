@@ -2,6 +2,7 @@
 using CapProject.Services.DataService;
 using CapProject.Viewmodels;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -25,12 +26,14 @@ namespace Desktopapp
                 });
 
             builder.Services.AddScoped<IDataService, DataService>();
+            builder.Services.AddScoped<IPopupService, PopupService>();
 
             builder.Services.AddTransient<LoadingPage>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<Facultyuserpage>();
             builder.Services.AddSingleton<Inventorypage>();
             builder.Services.AddSingleton<Homepage>();
+
 
             builder.Services.AddTransient<LoadingViewmodel>();
             builder.Services.AddTransient<LoginpageViewmodel>();

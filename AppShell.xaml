@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Desktopapp"
     xmlns:page="clr-namespace:CapProject.Pages"
+    xmlns:page1="clr-namespace:Desktopapp.Pages"
     xmlns:icons="clr-namespace:CapProject.Model"
     FlyoutBehavior="Locked"
     FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource SurfaceDark}}">
@@ -41,14 +42,21 @@
         Route="Homepage"/>
 
     <ShellContent
-        Title="Inventory"
+        Title="Equipments and Components"
         ContentTemplate="{DataTemplate page:Inventorypage}"
         Route="Inventorypage"/>
 
     <ShellContent
+        Shell.FlyoutItemIsVisible="False"
         Title="User Control Panel"
         ContentTemplate="{DataTemplate page:Facultyuserpage}"
         Route="Facultyuserpage"/>
+
+    <ShellContent
+        Shell.FlyoutItemIsVisible="False"
+        Title="User Control Panel"
+        ContentTemplate="{DataTemplate page1:SystemsSettingsPage}"
+        Route="SystemsSettingsPage"/>
 
     <ShellContent
         Title="Reports"

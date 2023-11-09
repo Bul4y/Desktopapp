@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desktopapp.Pages.SystemsSettingsPage"
+             Title="SystemsSettingsPage">
+    <Grid RowDefinitions=".4*,.7*"
+          ColumnDefinitions="*,*,*"
+          ColumnSpacing="5"
+          RowSpacing="5"
+          Margin="10">
+        <Frame>
+            <Grid RowDefinitions="auto,*"
+                  ColumnDefinitions="*,auto">
+                <Label Text="Categories"
+                       FontSize="18"/>
+                <Label Text="Add"
+                       Grid.Column="1"/>
+                <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2">
+                    <ListView>
+                        
+                    </ListView>
+                </ScrollView>
+            </Grid>
+        </Frame>
+        <Frame Grid.Column="1">
+            <Grid RowDefinitions="auto,*"
+                  ColumnDefinitions="*,auto">
+                <Label Text="Location"
+               FontSize="18"/>
+                <Label Text="Add"
+               Grid.Column="1"/>
+                <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2">
+                    <ListView>
+
+                    </ListView>
+                </ScrollView>
+            </Grid>
+        </Frame>
+
+        <Frame Grid.Column="2">
+            <Grid RowDefinitions="auto,*"
+                  ColumnDefinitions="*,auto">
+                <Label Text="Status"
+               FontSize="18"/>
+                <Label Text="Add"
+               Grid.Column="1"/>
+                <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2">
+                    <ListView>
+
+                    </ListView>
+                </ScrollView>
+            </Grid>
+        </Frame>
+        <Frame Grid.Row="1"
+               Grid.ColumnSpan="3">
+            
+        </Frame>
+    </Grid>
+</ContentPage>
