@@ -33,14 +33,11 @@ namespace CapProject.Viewmodels
         private bool _ispassword = false;
         [ObservableProperty]
         private bool _isconpassword = false;
-
         [ObservableProperty]
         private bool _passwordmismatch = false;
-
         [ObservableProperty]
         private List<ViewUserListDTO> _Users;
         public bool valid { get; set; } = true;
-
         public FacultypageViewmodel(IDataService dataService)
         {
             _Dataservice = dataService;
@@ -53,7 +50,6 @@ namespace CapProject.Viewmodels
             };
             LoadUserList();
         }
-
         [RelayCommand]
         public async Task AddAccount()
         {
@@ -75,7 +71,7 @@ namespace CapProject.Viewmodels
                     var message = await _Dataservice.CreateNewAccount(account);
 
                     await Application.Current.MainPage.DisplayAlert("Action Result", $"{message}", "Ok");
-                    await LoadUserList();
+                    LoadUserList();
                 }
                 else if (!Password.Equals(Conpassword))
                 {
@@ -84,20 +80,18 @@ namespace CapProject.Viewmodels
                 }
             }
         }
-
         [RelayCommand]
         public async Task DeleteUser(int userId)
         {
             var userToRemove = Users.FirstOrDefault(u => u.Id == userId);
             if (userToRemove != null)
             {
-                await LoadUserList();
+                LoadUserList();
             }
         }
-        public async Task LoadUserList()
+        async void LoadUserList()
         {
             Users = await _Dataservice.GetUserList();
-
         }
         public bool IsNotEmpty()
         {

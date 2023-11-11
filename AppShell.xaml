@@ -42,7 +42,7 @@
         Route="Homepage"/>
 
     <ShellContent
-        Title="Equipments and Components"
+        Title="Equipment and Component"
         ContentTemplate="{DataTemplate page:Inventorypage}"
         Route="Inventorypage"/>
 
@@ -59,7 +59,7 @@
         Route="SystemsSettingsPage"/>
 
     <ShellContent
-        Title="Reports"
+        Title="Logs"
         ContentTemplate="{DataTemplate page:ReportPage}"
         Route="ReportPage"/>
 

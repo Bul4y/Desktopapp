@@ -12,6 +12,7 @@ namespace CapProject.Viewmodels
     public partial class HomepageViewmodel : ObservableObject
     {
         private readonly IDataService _Dataservice;
+        private Thread thread;
         private static readonly SKColor s_blue = new(51, 225, 237);
         [ObservableProperty]
         private string _role;
@@ -40,7 +41,7 @@ namespace CapProject.Viewmodels
             _Dataservice = dataService;
             DisplayItemList();
             DisplayStatusNameList();
-
+            thread = new Thread(LoadEquipment);
         }
         [ObservableProperty]
         public ISeries[] _series;
@@ -70,14 +71,11 @@ namespace CapProject.Viewmodels
             }
 
         };
-        public async Task DisplayItemList()
+        public async void DisplayItemList()
         {
-            EquipmentList = await _Dataservice.GetItemList();
             HistoryLog = await _Dataservice.GetHistoryLog();
             var userCount = await _Dataservice.GetTotalUserCount();
             var equipmentCount = await _Dataservice.GetTotalEquipmentCount();
-
-
 
             UserCount = userCount.ToString();
             EquipmentCount = equipmentCount.ToString();
@@ -97,26 +95,36 @@ namespace CapProject.Viewmodels
             };
 
         }
-        public async Task DisplayStatusNameList()
+        public async void DisplayStatusNameList()
         {
             var statuslist = await _Dataservice.GetStatusCount();
-            StatusNames = statuslist.Select(x => x.StatusName).ToArray();
-            StatusCount = statuslist.Select(x => x.Count).ToArray();
-
-            StatusNameArray = new Axis[]
+            if(statuslist != null)
             {
+                StatusNames = statuslist.Select(x => x.StatusName).ToArray();
+                StatusCount = statuslist.Select(x => x.Count).ToArray();
+
+                StatusNameArray = new Axis[]
+                {
                 new() {
                     Labels = StatusNames,
                 }
-            };
-            Colser = new ISeries[]
-            {
+                };
+                Colser = new ISeries[]
+                {
                 new ColumnSeries<int>
                 {
                     Values = StatusCount,
                 }
-            };
+                };
+            }
         }
-
+        private async void LoadEquipment()
+        {
+            while(true)
+            {
+                EquipmentList = await _Dataservice.GetItemList();
+                Thread.Sleep(1000);
+            }
+        }
     }
 }

@@ -183,8 +183,6 @@
                     <Button Text="Create"
                             Command="{Binding AddAccountCommand}"
                             ToolTipProperties.Text="Add New Account"/>
-                    <Button Text="Update"
-                            IsEnabled="False"/>
                 </StackLayout>
             </Grid>
         </Grid>

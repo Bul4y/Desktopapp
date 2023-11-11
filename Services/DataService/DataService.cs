@@ -3,7 +3,6 @@ using ModelsAndDTOs.Models;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
-using ThreadNetwork;
 
 namespace CapProject.Services.DataService;
 
@@ -303,15 +302,15 @@ public class DataService : IDataService
         }
     }
 
-    public async Task<List<string>> GetstatusList()
+    public async Task<List<StatusDTO>> GetstatusList()
     {
         try
         {
-            var response = await _Httpclient.GetAsync($"{_Url}/Status/GetStatusList");
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/GetStatusList");
             if (response.IsSuccessStatusCode)
             {
                 string readmessage = await response.Content.ReadAsStringAsync();
-                List<string> result = JsonSerializer.Deserialize<List<string>>(readmessage, _jsonSerializer);
+                List<StatusDTO> result = JsonSerializer.Deserialize<List<StatusDTO>>(readmessage, _jsonSerializer);
                 return result;
             }
             return null;
@@ -323,15 +322,16 @@ public class DataService : IDataService
             return null;
         }
     }
-    public async Task<List<string>> GetCategoryList()
+
+    public async Task<List<CategoryDTO>> GetCategoryList()
     {
         try
         {
-            var response = await _Httpclient.GetAsync($"{_Url}/Category/GetCategory");
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/GetCategoryList");
             if (response.IsSuccessStatusCode)
             {
                 string readmessage = await response.Content.ReadAsStringAsync();
-                List<string> result = JsonSerializer.Deserialize<List<string>>(readmessage, _jsonSerializer);
+                List<CategoryDTO> result = JsonSerializer.Deserialize<List<CategoryDTO>>(readmessage, _jsonSerializer);
                 return result;
             }
             return null;
@@ -343,15 +343,15 @@ public class DataService : IDataService
             return null;
         }
     }
-    public async Task<List<string>> GetIssuersNameList()
+    public async Task<List<IssuerDTO>> GetIssuersNameList()
     {
         try
         {
-            var response = await _Httpclient.GetAsync($"{_Url}/Issuer/GetIssuer");
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/GetIssuerList\r\n");
             if (response.IsSuccessStatusCode)
             {
                 string readmessage = await response.Content.ReadAsStringAsync();
-                List<string> result = JsonSerializer.Deserialize<List<string>>(readmessage, _jsonSerializer);
+                List<IssuerDTO> result = JsonSerializer.Deserialize<List<IssuerDTO>>(readmessage, _jsonSerializer);
                 return result;
             }
             return null;
@@ -363,18 +363,202 @@ public class DataService : IDataService
             return null;
         }
     }
-    public async Task<List<string>> GetLocationList()
+    public async Task<List<LocationDTO>> GetLocationList()
     {
         try
         {
-            var response = await _Httpclient.GetAsync($"{_Url}/Location/GetLocationList");
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/GetLocationList");
             if (response.IsSuccessStatusCode)
             {
                 string readmessage = await response.Content.ReadAsStringAsync();
-                List<string> result = JsonSerializer.Deserialize<List<string>>(readmessage, _jsonSerializer);
+                List<LocationDTO> result = JsonSerializer.Deserialize<List<LocationDTO>>(readmessage, _jsonSerializer);
                 return result;
             }
             return null;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+    public async Task<string> DeleteStatus(int id)
+    {
+        try
+        {
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/DeleteStatus/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+    public async Task<string> DeleteCategory(int id)
+    {
+        try
+        {
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/DeleteCategory/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+    public async Task<string> DeleteIssuers(int id)
+    {
+        try
+        {
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/DeleteIssuer/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+    public async Task<string> DeleteLocation(int id)
+    {
+        try
+        {
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/DeleteLocation/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+    public async Task<List<ReportModel>> GetReportList()
+    {
+        try
+        {
+            var response = await _Httpclient.GetAsync($"{_Url}/UnifyList/DisplayReport");
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                List<ReportModel> result = JsonSerializer.Deserialize<List<ReportModel>>(readmessage, _jsonSerializer);
+                return result;
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+
+    public async Task<string> AddStatus(string PN)
+    {
+        try
+        {
+            var response = await _Httpclient.PostAsync($"{_Url}/Status/AddStatus/{PN}",new StringContent("No Content"));
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+
+    public async Task<string> AddCategory(string PN)
+    {
+        try
+        {
+            var response = await _Httpclient.PostAsync($"{_Url}/Category/AddCategory/{PN}", new StringContent("No Content"));
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+
+    public async Task<string> AddLocation(string PN)
+    {
+        try
+        {
+            var response = await _Httpclient.PostAsync($"{_Url}/Location/AddLocation/{PN}", new StringContent("No Content"));
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message;
+            Debug.WriteLine(message);
+            return null;
+        }
+    }
+
+    public async Task<string> AddIssuer(string PN)
+    {
+        try
+        {
+            var response = await _Httpclient.PostAsync($"{_Url}/Issuer/AddIssuer/{PN}", new StringContent("No Content"));
+            if (response.IsSuccessStatusCode)
+            {
+                string readmessage = await response.Content.ReadAsStringAsync();
+                return readmessage;
+            }
+            string responsemessage = await response.Content.ReadAsStringAsync();
+            return responsemessage;
         }
         catch (Exception ex)
         {

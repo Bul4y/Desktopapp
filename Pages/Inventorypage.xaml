@@ -17,11 +17,11 @@
                       Margin="0,0,0,20">
                     <Grid ColumnDefinitions="auto,auto"
                           ColumnSpacing="5">
-                        <Button Text="Equipments"
+                        <Button Text="Equipment"
                                 IsEnabled="{Binding ComponentSelected}"
                                 Command="{Binding DisplayEquipmentCommand}"/>
                         
-                        <Button Text="Components"
+                        <Button Text="Component"
                                 IsEnabled="{Binding EquipmentSelected}"
                                 Command="{Binding DisplayComponentsCommand}"
                                 Grid.Column="1"/>

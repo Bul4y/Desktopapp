@@ -16,11 +16,21 @@ namespace CapProject.Services.DataService
         public Task<List<ViewingComputerDTO>> GetComputerList();
         public Task<List<UniFiedList>> GetItemList();
         public Task<List<ViewUserListDTO>> GetUserList();
+        public Task<List<ReportModel>> GetReportList();
         public Task<List<ViewComponentListDTO>> GetComponentList();
         public Task<GetEquipmentListDTO> GetEquipmentByPN(string PN);
-        public Task<List<string>> GetstatusList();
-        public Task<List<string>> GetCategoryList();
-        public Task<List<string>> GetIssuersNameList();
-        public Task<List<string>> GetLocationList();
+        public Task<string> AddStatus(string PN);
+        public Task<string> AddCategory(string PN);
+        public Task<string> AddLocation(string PN);
+        public Task<string> AddIssuer(string PN);
+        public Task<List<StatusDTO>> GetstatusList();
+        public Task<string> DeleteStatus(int id);
+        public Task<List<CategoryDTO>> GetCategoryList();
+        public Task<string> DeleteCategory(int id);
+        public Task<List<IssuerDTO>> GetIssuersNameList();
+        public Task<string> DeleteIssuers(int id);
+        public Task<List<LocationDTO>> GetLocationList();
+        public Task<string> DeleteLocation(int id);
+
     }
 }

@@ -28,8 +28,8 @@
                            Grid.Column="1"
                            VerticalOptions="Center"/>
                 </Grid>
-                <Label Text="Equipment Status Management System"
-                       FontSize="25"
+                <Label Text="Equipment Status Identification System"
+                       FontSize="30"
                        Grid.Row="1"
                        Margin="10,0"
                        VerticalTextAlignment="Center"
@@ -93,18 +93,9 @@
                                IsPassword="True"
                                BackgroundColor="AliceBlue"/>
                     </Grid>
-                    <Grid Grid.Row="4"
-                          ColumnDefinitions="auto,*"
-                          Margin="25,0,0,0">
-                        <CheckBox Color="{StaticResource AccentDarker}"/>
-                        <Label Text="Remember me"
-                               Grid.Column="1"
-                               VerticalOptions="Center"
-                               TextColor="{StaticResource AccentDarker}"/>
-                    </Grid>
                     <Button Text="Login"
                             Padding="10"
-                            Grid.Row="5"
+                            Grid.Row="4"
                             WidthRequest="100"
                             HorizontalOptions="Center"
                             Command="{Binding LoginCommand}"

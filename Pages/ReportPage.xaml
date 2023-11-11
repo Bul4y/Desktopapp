@@ -1,12 +1,81 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Desktopapp.Viewmodels"
+             xmlns:data="clr-namespace:ModelsAndDTOs.Models;assembly=ModelsAndDTOs"
+             x:DataType="viewmodel:ReportsPageViewmodel"
              x:Class="CapProject.Pages.ReportPage"
-             Title="Report Page">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Equipment Reports and System Activity">
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="10"
+          Margin="15">
+            <Grid RowDefinitions="auto,*">
+                <Label Text="Reports"
+                       FontSize="18"/>
+                <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                            Grid.Row="1"
+                            Padding="10">
+                    <ListView ItemsSource="{Binding ReportList}">
+                        <ListView.Header>
+                            <Grid ColumnDefinitions=".6*,*,*">
+                                <Label Text="Property Number"
+                                       FontSize="14"/>
+                                <Label Text="Description"
+                                       FontSize="14"
+                                       Grid.Column="1"/>
+                                <Label Text="Date Added"
+                                       FontSize="14"
+                                       Grid.Column="2"/>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:ReportModel">
+                                <ViewCell>
+                                    <Grid ColumnDefinitions=".6*,*,*"
+                                          Margin="0,3">
+                                        <Label Text="{Binding PN}"/>
+                                        <Label Text="{Binding Description}"
+                                           Grid.Column="1"/>
+                                        <Label Text="{Binding CreatedDate}"
+                                           Grid.Column="2"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+        </Grid>
+        <Grid RowDefinitions="auto,*"
+              Grid.Column="1">
+            <Label Text="System Activity"
+                   FontSize="18"/>
+            <ScrollView BackgroundColor="{StaticResource BaseDark1}"
+                Grid.Row="1"
+                Padding="10">
+                <ListView ItemsSource="{Binding HistoryList}">
+                    <ListView.Header>
+                        <Grid ColumnDefinitions="*,.4*">
+                            <Label Text="Description"
+                                   FontSize="14"/>
+                            <Label Text="Date Added"
+                                   FontSize="14"
+                                   Grid.Column="1"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="data:HistoryModel">
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,.4*"
+                                      Margin="0,3">
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding AtTime}"
+                                           Grid.Column="1"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Grid>
+    </Grid>
 </ContentPage>
