@@ -63,6 +63,11 @@
         ContentTemplate="{DataTemplate page:ReportPage}"
         Route="ReportPage"/>
 
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate page1:ReportView}"
+        Route="ReportView"/>
+    
     <Shell.FlyoutFooter>
         <Grid Padding="10">
             <Button Text="Logout"

@@ -19,6 +19,7 @@ namespace Desktopapp
             Routing.RegisterRoute(nameof(ReportPage), typeof(ReportPage));
             Routing.RegisterRoute(nameof(ComponentsPage), typeof(ComponentsPage));
             Routing.RegisterRoute(nameof(SystemsSettingsPage), typeof(SystemsSettingsPage));
+            Routing.RegisterRoute(nameof(ReportView), typeof(ReportView));
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

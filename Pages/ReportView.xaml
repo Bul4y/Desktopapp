@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desktopapp.Pages.ReportView"
+             Title="ReportView">
+    <WebView>
+        <WebView.Source>
+            <HtmlWebViewSource>
+                <HtmlWebViewSource.Html>
+
+                    <![CDATA[ 
+
+                <html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head> 
+    <title>Telerik HTML5 Report Viewer Demo</title> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" rel="stylesheet" id="common-css" /> 
+    <link href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.blueopal.min.css" rel="stylesheet" id="skin-css" /> 
+    <script src="https://demos.telerik.com/reporting/api/reports/resources/js/telerikReportViewer"></script> 
+
+    <style> 
+        body { 
+            font-family: Verdana, Arial, sans-serif; 
+            margin: 5px; 
+        } 
+
+        #reportViewer1 { 
+         . . . 
+        } 
+    </style> 
+</head> 
+
+<body> 
+    <div id="reportViewer1"> 
+        loading... 
+    </div> 
+
+    <script type="text/javascript"> 
+        $(document).ready(function () { 
+            $("#reportViewer1") 
+                .telerik_ReportViewer({ 
+                    //serviceUrl: "https://demos.telerik.com/reporting/api/reports/", 
+                    //reportSource: { 
+                        //parameters: {} 
+                        //parameters: { Year: [2001, 2003, 2004] } 
+                    //}, 
+                    // Report Server connection configuration 
+                    // If Report Server is used instead of hosting a REST Service, comment out 'serviceUrl' and 'reportSource' above 
+                    // uncomment 'reportServer' and 'reportSource' below 
+                    reportServer: { 
+                        url: "http://sh1nobi:83", 
+                        username: "Bul4y", 
+                        password: "Manoguid@2001" 
+                    }, 
+                    reportSource: { 
+                    //    // For Report Server, use "{Category}/{ReportName}" 
+                        report: "Samples/Equipment Status Summary Report" 
+                    }, 
+                }); 
+        }); 
+
+    </script> 
+
+</body> 
+</html> 
+
+                ]]>
+
+                </HtmlWebViewSource.Html>
+            </HtmlWebViewSource>
+        </WebView.Source>
+    </WebView>
+</ContentPage>
