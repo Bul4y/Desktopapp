@@ -42,6 +42,7 @@ namespace CapProject.Viewmodels
             DisplayItemList();
             DisplayStatusNameList();
             thread = new Thread(LoadEquipment);
+            thread.Start();
         }
         [ObservableProperty]
         public ISeries[] _series;
@@ -120,9 +121,21 @@ namespace CapProject.Viewmodels
         }
         private async void LoadEquipment()
         {
-            while(true)
+            EquipmentList = await _Dataservice.GetItemList();
+            var _lastFetchedItemDate = EquipmentList.LastOrDefault().DateCreated;
+            while (true)
             {
-                EquipmentList = await _Dataservice.GetItemList();
+                List<UniFiedList> newEquipmentList = await _Dataservice.GetItemList();
+
+                UniFiedList latestAddedItem = newEquipmentList.LastOrDefault();
+
+                if (latestAddedItem != null && latestAddedItem.DateCreated != _lastFetchedItemDate)
+                {
+                    EquipmentList.Add(latestAddedItem);
+
+                    _lastFetchedItemDate = latestAddedItem.DateCreated;
+                }
+
                 Thread.Sleep(1000);
             }
         }
