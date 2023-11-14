@@ -19,9 +19,16 @@
                 <Grid RowDefinitions="auto,*"
                       ColumnSpacing="10"
                       HorizontalOptions="Center">
-                    <Image Source="equipcheck.png"
+                    <Image Source="nfcapplogo.png"
                            WidthRequest="110"
-                           x:Name="Image"/>
+                           x:Name="Image">
+                        <Image.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="-8,10"
+                                    Radius="10"
+                                    Opacity=".7" />
+                        </Image.Shadow>
+                    </Image>
                     <Label Text="EquipCheck"
                            Grid.Row="1"
                            FontSize="Header"
@@ -38,12 +45,26 @@
                       ColumnDefinitions="auto,auto"
                       HorizontalOptions="Center">
                     <Image Source="cictlogo.png"
-                           WidthRequest="140"/>
+                           WidthRequest="140">
+                        <Image.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="-10,-20"
+                                    Radius="10"
+                                    Opacity=".5" />
+                        </Image.Shadow>
+                    </Image>
                     <Image Source="catsulogo.png"
                            Grid.Column="1"
-                           WidthRequest="100"/>
+                           WidthRequest="100">
+                        <Image.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="-10,-20"
+                                    Radius="10"
+                                    Opacity=".5" />
+                        </Image.Shadow>
+                    </Image>
                 </Grid>
-                <Label Text="Copy Right 2023"
+                <Label Text="Powered By: Gani's Mami House"
                        Grid.Row="3"
                        HorizontalOptions="Center"/>
             </Grid>

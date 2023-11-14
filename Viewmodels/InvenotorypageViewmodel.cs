@@ -55,11 +55,16 @@ namespace CapProject.Viewmodels
         [RelayCommand]
         public async void DisplayEquipment()
         {
-            ComponentList = null;
+            ComponentSelected = false;
+
+            if(ComponentList !=  null)
+            {
+                ComponentList.Clear();
+            }
+
             OriginalDto = await _Dataservice.GetItemList();
             Dto = OriginalDto;
             EquipmentSelected = true;
-            ComponentSelected = false;
             return;
 
         }
@@ -68,11 +73,14 @@ namespace CapProject.Viewmodels
         public void FilterData()
         {
             if (OriginalDto == null)
+            {
                 return;
+            }
 
             if (string.IsNullOrWhiteSpace(SearchText))
             {
                 Dto = OriginalDto;
+                return;
             }
             else
             {
@@ -83,19 +91,21 @@ namespace CapProject.Viewmodels
                   item.Location.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
                   item.DateCreated.ToString("yyyy-MM-dd").Contains(SearchText, StringComparison.OrdinalIgnoreCase))
                   .ToList();
+                   return;
             }
         }
 
         [RelayCommand]
-        public async void DisplayComponents()
+        public async Task DisplayComponents()
         {
-            Dto = null;
-            OriginalDto = null;
-
-            ComponentList = await _Dataservice.GetComponentList();
-
-            EquipmentSelected = false;
             ComponentSelected = true;
+            EquipmentSelected = false;
+            if (Dto != null && OriginalDto != null)
+            {
+                Dto.Clear();
+                OriginalDto.Clear();
+            }
+            ComponentList = await _Dataservice.GetComponentList();
             return;
         }
     }

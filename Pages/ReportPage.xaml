@@ -10,7 +10,7 @@
           ColumnSpacing="10"
           Margin="15">
             <Grid RowDefinitions="auto,*">
-                <Label Text="Reports"
+                <Label Text="Equipment Maintenance Reports"
                        FontSize="18"/>
                 <ScrollView BackgroundColor="{StaticResource BaseDark1}"
                             Grid.Row="1"

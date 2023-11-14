@@ -72,9 +72,18 @@ namespace CapProject.Viewmodels
             }
 
         };
+        public Axis[] Yaxes { get; set; } =
+        {
+            new Axis
+            {
+                LabelsPaint = new SolidColorPaint(SKColors.White),
+            }
+
+        };
         public async void DisplayItemList()
         {
-            HistoryLog = await _Dataservice.GetHistoryLog();
+            List<HistoryModel> hold = await _Dataservice.GetHistoryLog();
+            HistoryLog = hold.Take(10).ToList();
             var userCount = await _Dataservice.GetTotalUserCount();
             var equipmentCount = await _Dataservice.GetTotalEquipmentCount();
 
@@ -108,6 +117,7 @@ namespace CapProject.Viewmodels
                 {
                 new() {
                     Labels = StatusNames,
+                    LabelsPaint = new SolidColorPaint(SKColors.White),
                 }
                 };
                 Colser = new ISeries[]
@@ -126,17 +136,18 @@ namespace CapProject.Viewmodels
             while (true)
             {
                 List<UniFiedList> newEquipmentList = await _Dataservice.GetItemList();
-
-                UniFiedList latestAddedItem = newEquipmentList.LastOrDefault();
-
-                if (latestAddedItem != null && latestAddedItem.DateCreated != _lastFetchedItemDate)
+                if(newEquipmentList != null)
                 {
-                    EquipmentList.Add(latestAddedItem);
+                    UniFiedList latestAddedItem = newEquipmentList.LastOrDefault();
 
-                    _lastFetchedItemDate = latestAddedItem.DateCreated;
+                    if (latestAddedItem != null && latestAddedItem.DateCreated != _lastFetchedItemDate)
+                    {
+                        EquipmentList.Add(latestAddedItem);
+
+                        _lastFetchedItemDate = latestAddedItem.DateCreated;
+                    }
+                    Thread.Sleep(1000);
                 }
-
-                Thread.Sleep(1000);
             }
         }
     }

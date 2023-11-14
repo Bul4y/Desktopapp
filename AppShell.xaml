@@ -13,7 +13,7 @@
     <Shell.FlyoutHeader>
         <StackLayout Padding="15">
             <Image Source="equipcheck.png"
-               WidthRequest="120"/>
+                   WidthRequest="120"/>
             <Label Text="EquipCheck"
                HorizontalOptions="Center"
                FontSize="35"/>
@@ -62,12 +62,22 @@
         Title="Logs"
         ContentTemplate="{DataTemplate page:ReportPage}"
         Route="ReportPage"/>
+    
+    <ShellContent
+        Title="Status Summary Report"
+        ContentTemplate="{DataTemplate page1:EquipmentStatusReport}"
+        Route="EquipmentStatusReport"/>
 
     <ShellContent
-        Title="Dashboard"
+        Shell.FlyoutItemIsVisible="False"
         ContentTemplate="{DataTemplate page1:ReportView}"
         Route="ReportView"/>
-    
+
+    <ShellContent
+        Shell.FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate page1:StatusSummaryPage}"
+        Route="StatusSummaryPage"/>
+
     <Shell.FlyoutFooter>
         <Grid Padding="10">
             <Button Text="Logout"

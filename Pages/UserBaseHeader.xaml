@@ -3,8 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CapProject.Pages.UserBaseHeader"
              Padding="0,15">
-    <Image Source="equipcheck.png"
-           WidthRequest="120"/>
+    <Image Source="nfcapplogo.png"
+           WidthRequest="120">
+        <Image.Shadow>
+            <Shadow Brush="Black"
+                Offset="-8,10"
+                Radius="10"
+                Opacity=".7" />
+        </Image.Shadow>
+    </Image>
     <Label Text="Username" 
            x:Name="UserName"
            Padding="10"

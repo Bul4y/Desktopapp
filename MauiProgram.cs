@@ -37,6 +37,7 @@ namespace Desktopapp
             builder.Services.AddSingleton<Homepage>();
             builder.Services.AddSingleton<ReportPage>();
             builder.Services.AddSingleton<SystemsSettingsPage>();
+            builder.Services.AddSingleton<EquipmentStatusReport>();
 
 
             builder.Services.AddTransient<LoadingViewmodel>();
@@ -46,6 +47,7 @@ namespace Desktopapp
             builder.Services.AddSingleton<HomepageViewmodel>();
             builder.Services.AddSingleton<InvenotorypageViewmodel>();
             builder.Services.AddSingleton<SystemSettingsPageViewmodel>();
+            builder.Services.AddSingleton<EquipmentStatusReportViewmodel>();
 
 #if DEBUG
             builder.Logging.AddDebug();

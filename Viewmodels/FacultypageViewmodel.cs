@@ -81,7 +81,7 @@ namespace CapProject.Viewmodels
             }
         }
         [RelayCommand]
-        public async Task DeleteUser(int userId)
+        public Task DeleteUser(int userId)
         {
             var userToRemove = Users.FirstOrDefault(u => u.Id == userId);
             if (userToRemove != null)
