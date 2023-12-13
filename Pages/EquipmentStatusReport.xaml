@@ -5,8 +5,8 @@
              x:DataType="viewmodel:EquipmentStatusReportViewmodel"
              x:Class="Desktopapp.Pages.EquipmentStatusReport"
              Title="">
-    <Grid ColumnDefinitions="*,.4*">
-        <Grid IsVisible="false">
+    <Grid ColumnDefinitions="*,.3*">
+        <Grid IsVisible="true">
             <WebView>
                 <WebView.Source>
                     <HtmlWebViewSource>
@@ -54,7 +54,7 @@
                                                 // If Report Server is used instead of hosting a REST Service, comment out 'serviceUrl' and 'reportSource' above 
                                                 // uncomment 'reportServer' and 'reportSource' below 
                                                 reportServer: { 
-                                                    url: "http://patricia:83", 
+                                                    url: "http://SH1NOBI:83", 
                                                     username: "Bul4y", 
                                                     password: "Manoguid@2001" 
                                                 }, 
@@ -75,7 +75,7 @@
                 </WebView.Source>
             </WebView>
         </Grid>
-        <Grid IsVisible="true">
+        <Grid IsVisible="false">
             <WebView>
                 <WebView.Source>
                     <HtmlWebViewSource>
@@ -123,7 +123,7 @@
                                         // If Report Server is used instead of hosting a REST Service, comment out 'serviceUrl' and 'reportSource' above 
                                         // uncomment 'reportServer' and 'reportSource' below 
                                         reportServer: { 
-                                            url: "http://patricia:83", 
+                                            url: "http://SH1NOBI:83", 
                                             username: "Bul4y", 
                                             password: "Manoguid@2001" 
                                         }, 
@@ -145,7 +145,7 @@
             </WebView>
         </Grid>
         <Grid Grid.Column="1"
-              BackgroundColor="Gray"
+              BackgroundColor="{StaticResource SurfaceDark}"
               Padding="15"
               RowDefinitions="auto,auto,auto"
               RowSpacing="10">
