@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\jezel\source\repos\Desktopapp\Desktopapp.csproj" />
+  <event action="Analyze" type="Success" name="Desktopapp" path="C:\Users\jezel\source\repos\Desktopapp\Desktopapp.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\jezel\source\repos\EquipCheckWebAPI\ModelsAndDTOs\ModelsAndDTOs.csproj" />
+  <event action="Analyze" type="Success" name="ModelsAndDTOs" path="C:\Users\jezel\source\repos\EquipCheckWebAPI\ModelsAndDTOs\ModelsAndDTOs.csproj" />
+  <event action="Analyze" type="Success" name="Desktopapp" path="C:\Users\jezel\source\repos\Desktopapp\Desktopapp.sln" />
+</log>
