@@ -6,7 +6,7 @@
              x:Class="Desktopapp.Pages.EquipmentStatusReport"
              Title="">
     <Grid ColumnDefinitions="*,.4*">
-        <Grid IsVisible="false">
+        <Grid IsVisible="{Binding Isstatus}">
             <WebView>
                 <WebView.Source>
                     <HtmlWebViewSource>
@@ -60,7 +60,7 @@
                                                 }, 
                                                 reportSource: { 
                                                 //    // For Report Server, use "{Category}/{ReportName}" 
-                                                    report: "Samples/Equipment Report" 
+                                                    report: "Samples/Status Summary Report" 
                                                 }, 
                                             }); 
                                     }); 
@@ -75,7 +75,7 @@
                 </WebView.Source>
             </WebView>
         </Grid>
-        <Grid IsVisible="true">
+        <Grid IsVisible="{Binding Isequipment}">
             <WebView>
                 <WebView.Source>
                     <HtmlWebViewSource>
@@ -158,9 +158,13 @@
                 <Label Text="Generate:"/>
                 <Button Text="Status Summary"
                         Grid.Row="1"
-                        ToolTipProperties.Text="Generate Status Report"/>
+                        Command="{Binding ViewStatusCommand}"
+                        ToolTipProperties.Text="Generate Status Report"
+                        IsEnabled="{Binding Isequipment}"/>
                 <Button Text="Equiment Summary"
                         Grid.Row="2"
+                        Command="{Binding ViewEquipmentCommand}"
+                        IsEnabled="{Binding Isstatus}"
                         ToolTipProperties.Text="Generate Summary Report"/>
             </Grid>
         </Grid>

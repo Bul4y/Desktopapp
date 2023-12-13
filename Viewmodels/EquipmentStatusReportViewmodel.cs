@@ -11,16 +11,43 @@ namespace Desktopapp.Viewmodels
 {
     public partial class EquipmentStatusReportViewmodel : ObservableObject
     {
-        public EquipmentStatusReportViewmodel()
-        {
-            
-        }
+        [ObservableProperty]
+        private bool _isstatus = true;
+        [ObservableProperty]
+        private bool _isequipment = false;
+
 
         [RelayCommand]
-        private async Task GotoGenerateReport()
+        private void ViewStatus()
         {
-            await Shell.Current.GoToAsync(nameof(ReportView));
-            return;
+            if (!Isstatus)
+            {
+                Isstatus = true;
+                Isequipment = false;
+                return;
+            }
+            if (Isstatus)
+            {
+                Isstatus = false;
+                Isequipment = true;
+                return;
+            }
+        }
+        [RelayCommand]
+        private void ViewEquipment()
+        {
+            if (!Isequipment)
+            {
+                Isstatus = false;
+                Isequipment = true;
+                return;
+            }
+            if (Isequipment)
+            {
+                Isstatus = true;
+                Isequipment = false;
+                return;
+            }
         }
     }
 }

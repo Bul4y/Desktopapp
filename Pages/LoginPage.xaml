@@ -106,7 +106,7 @@
                                TextColor="{StaticResource AccentDarker}"
                                FontSize="30"
                                VerticalOptions="Center"/>
-                        <Entry Placeholder="Email"
+                        <Entry Placeholder="password"
                                Text="{Binding Passwordcred}"
                                Grid.Column="1"
                                PlaceholderColor="Black"

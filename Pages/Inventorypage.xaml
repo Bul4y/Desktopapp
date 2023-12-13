@@ -262,12 +262,12 @@
                                     <ViewCell>
                                         <Grid ColumnDefinitions="*,.5*,*">
                                             <Label Text="{Binding ComponentUid}"
-                                                   FontSize="9"/>
+                                                   FontSize="12"/>
                                             <Label Text="{Binding Type}"
                                                    Grid.Column="1"
-                                                   FontSize="9"/>
+                                                   FontSize="12"/>
                                             <Label Text="{Binding Specification}"
-                                                   FontSize="9"
+                                                   FontSize="12"
                                                    Grid.Column="2"/>
                                         </Grid>
                                     </ViewCell>

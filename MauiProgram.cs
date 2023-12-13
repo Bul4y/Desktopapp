@@ -48,6 +48,7 @@ namespace Desktopapp
             builder.Services.AddSingleton<InvenotorypageViewmodel>();
             builder.Services.AddSingleton<SystemSettingsPageViewmodel>();
             builder.Services.AddSingleton<EquipmentStatusReportViewmodel>();
+            builder.Services.AddSingleton<GenerateReportViewmodel>();
 
 #if DEBUG
             builder.Logging.AddDebug();
