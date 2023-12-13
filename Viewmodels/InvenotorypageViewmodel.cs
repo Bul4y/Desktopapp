@@ -53,7 +53,7 @@ namespace CapProject.Viewmodels
         }
 
         [RelayCommand]
-        public async void DisplayEquipment()
+        public async Task DisplayEquipment()
         {
             ComponentSelected = false;
 
